@@ -578,6 +578,8 @@ layer = "integration"
 
 Difficulty: low.
 
+- **Done:** `5b82996` — evidence `specs/001-core/evidence/task-12.txt`
+
 ## Task 13 — S8 settings page
 
 Objective: UX S8 — profile section editing `displayName` (and email) through `authStore.updateProfile` (sole profile owner — no settings store); appearance section: theme-mode control bound to `themeStore` + brand note pointing at the theming README. Inline validation on name; changes persist immediately.

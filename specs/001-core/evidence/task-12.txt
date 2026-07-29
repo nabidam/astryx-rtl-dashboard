@@ -1,0 +1,31 @@
+Task 12 verification evidence (captured 2026-07-29)
+
+Command: yarn verify && yarn vitest run src/features/auth/RegisterPage.test.tsx src/features/auth/ForgotPasswordPage.test.tsx
+
+$ yarn typecheck && yarn lint && yarn format:check && yarn test
+$ tsc --noEmit
+$ eslint .
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ vitest run
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+ Test Files  18 passed (18)
+      Tests  56 passed (56)
+   Start at  14:41:24
+   Duration  12.35s (transform 3.72s, setup 0ms, import 54.67s, tests 23.86s, environment 25.51s)
+
+Done in 27.57s.
+
+$ /home/dev/projects/astryxs-rtl-dashboard/node_modules/.bin/vitest run src/features/auth/RegisterPage.test.tsx src/features/auth/ForgotPasswordPage.test.tsx
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+ Test Files  2 passed (2)
+      Tests  4 passed (4)
+   Start at  14:41:37
+   Duration  1.22s (transform 130ms, setup 0ms, import 670ms, tests 574ms, environment 889ms)
+
+Done in 1.79s.

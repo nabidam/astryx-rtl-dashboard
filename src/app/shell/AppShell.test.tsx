@@ -61,7 +61,9 @@ describe("app shell", () => {
     render(<RouterProvider router={router} />);
 
     await waitFor(() => {
-      expect(screen.getByText("صفحه ورود")).toBeTruthy();
+      expect(
+        screen.getByRole("heading", { name: "ورود به حساب کاربری" }),
+      ).toBeTruthy();
     });
 
     authStore.setState({ session: signedInSession });
@@ -89,7 +91,9 @@ describe("app shell", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "خروج از حساب" }));
     await waitFor(() => {
-      expect(screen.getByText("صفحه ورود")).toBeTruthy();
+      expect(
+        screen.getByRole("heading", { name: "ورود به حساب کاربری" }),
+      ).toBeTruthy();
       expect(authStore.getState().session).toBeNull();
     });
   });

@@ -8,6 +8,7 @@ import {
   useLocation,
 } from "react-router";
 import { useAuthStore } from "../features/auth/authStore";
+import { LoginPage } from "../features/auth/LoginPage";
 import { AppShell } from "./shell/AppShell";
 import { RtlProbe } from "./shell/RtlProbe";
 
@@ -17,7 +18,7 @@ export function RouterRoot() {
     document.documentElement.lang = "fa";
   }, []);
 
-  return <Text as="p">صفحه ورود</Text>;
+  return <LoginPage />;
 }
 
 export function RequireSession() {

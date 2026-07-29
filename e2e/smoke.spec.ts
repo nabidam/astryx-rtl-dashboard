@@ -5,8 +5,23 @@ test("boots as a Persian RTL document with Vazirmatn", async ({ page }) => {
 
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
   await expect(page.locator("html")).toHaveAttribute("lang", "fa");
-  await expect(page.locator("p")).toContainText("صفحه ورود");
-  await expect(page.locator("p")).toHaveCSS("font-family", /Vazirmatn/);
+  await expect(
+    page.getByRole("heading", { name: "ورود به حساب کاربری" }),
+  ).toBeVisible();
+  await expect(page.getByLabel("ایمیل")).toHaveCSS("font-family", /Vazirmatn/);
+});
+
+test("logs in with any non-empty credentials and opens the overview", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  await page.getByLabel("ایمیل").fill("ava@example.com");
+  await page.getByLabel("گذرواژه").fill("هرچیزی");
+  await page.getByRole("button", { name: "ورود به داشبورد" }).click();
+
+  await expect(page).toHaveURL(/\/overview$/);
+  await expect(page.getByRole("heading", { name: "نمای کلی" })).toBeVisible();
 });
 
 test("authenticated navigation, theme switching, and logout work in the shell", async ({
@@ -31,7 +46,9 @@ test("authenticated navigation, theme switching, and logout work in the shell", 
     page.locator('div[data-astryx-theme="astryx-rtl-dashboard-shell"]'),
   ).toHaveAttribute("data-theme", "dark");
   await page.getByRole("button", { name: "خروج از حساب" }).click();
-  await expect(page.getByText("صفحه ورود")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "ورود به حساب کاربری" }),
+  ).toBeVisible();
 });
 
 test("corrupt users storage recovers without crashing the authenticated shell", async ({

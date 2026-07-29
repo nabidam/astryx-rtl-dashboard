@@ -555,6 +555,8 @@ gate = 2
 
 Difficulty: medium.
 
+- **Done:** `d2fd305` — evidence `specs/001-core/evidence/task-11.txt`
+
 ## Task 12 — S2 register + S3 forgot-password (UI-only)
 
 Objective: UX S2/S3 — bare full-page forms, per-field inline Persian validation, no real submission. Register success routes to S1; forgot shows a success note + link back to S1. Links wired from S1.

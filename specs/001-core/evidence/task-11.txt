@@ -1,0 +1,36 @@
+Task 11 verification evidence (captured 2026-07-29)
+
+Command: yarn verify
+
+$ yarn typecheck && yarn lint && yarn format:check && yarn test
+$ tsc --noEmit
+$ eslint .
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ vitest run
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+ Test Files  16 passed (16)
+      Tests  52 passed (52)
+   Start at  14:35:36
+   Duration  10.69s (transform 3.76s, setup 0ms, import 46.36s, tests 19.46s, environment 21.39s)
+
+Done in 20.58s.
+
+Command: yarn test:e2e
+
+$ playwright test
+
+Running 7 tests using 7 workers
+
+[1/7] [chromium] › e2e/rtl-spike.spec.ts:3:1 › Astryx mirrors the shell and keeps the RTL probe within the viewport
+[2/7] [chromium] › e2e/smoke.spec.ts:27:1 › authenticated navigation, theme switching, and logout work in the shell
+[3/7] [chromium] › e2e/smoke.spec.ts:100:1 › corrupt users storage recovers without crashing the authenticated shell
+[4/7] [chromium] › e2e/smoke.spec.ts:14:1 › logs in with any non-empty credentials and opens the overview
+[5/7] [chromium] › e2e/smoke.spec.ts:3:1 › boots as a Persian RTL document with Vazirmatn
+[6/7] [chromium] › e2e/gate-1.spec.ts:45:1 › gate 1: fresh-profile auth and users CRUD journey
+[7/7] [chromium] › e2e/smoke.spec.ts:54:1 › the users table renders seeded Persian data and finds a persisted user
+  7 passed (11.7s)
+Done in 12.51s.

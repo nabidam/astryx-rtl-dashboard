@@ -631,6 +631,8 @@ gate = 2
 
 Difficulty: low.
 
+- **Done:** `d174f9b` — evidence `specs/001-core/evidence/task-14.txt`
+
 ## Task 15 — Developer theming: re-brand path + README
 
 Objective: kernel promise 5 — document fork-and-rebrand through `astryx theme`/tokens in README (never override `--color-*` in `:root`); verify no component-code edits are needed anywhere: chart theme reads tokens at derive time; shell and buttons restyle natively because no app code hardcodes colors (lint bans raw hex/px — CONVENTIONS.md — plus a grep-asserted test across `src/`). SPEC §9's shell/buttons half of the re-theme criterion is witnessed in the release-gate walkthrough observation (task 16).

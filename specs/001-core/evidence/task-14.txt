@@ -1,0 +1,19 @@
+Command: yarn verify
+
+$ tsc --noEmit
+$ eslint .
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ vitest run
+
+ Test Files  20 passed (20)
+      Tests  62 passed (62)
+   Start at 14:59:51
+   Duration 11.96s (transform 3.25s, setup 0ms, import 56.90s, tests 23.75s, environment 24.78s)
+
+Done in 22.85s.
+
+Acceptance journey:
+Command: local Playwright browser check against yarn dev
+Result: unknown route rendered "صفحه پیدا نشد" and its link href was "/overview".

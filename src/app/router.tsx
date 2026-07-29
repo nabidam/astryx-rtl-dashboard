@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import { Heading, Text } from "@astryxdesign/core/Text";
-import { VStack } from "@astryxdesign/core/VStack";
 import {
   createBrowserRouter,
   Navigate,
@@ -14,6 +12,8 @@ import { RegisterPage } from "../features/auth/RegisterPage";
 import { SettingsPage } from "../features/settings/SettingsPage";
 import { UsersPage } from "../features/users/UsersPage";
 import { UserFormPage } from "../features/users/UserFormPage";
+import { ErrorFallback } from "../pages/errors/ErrorFallback";
+import { NotFoundPage } from "../pages/errors/NotFoundPage";
 import { AppShell } from "./shell/AppShell";
 import { RtlProbe } from "./shell/RtlProbe";
 
@@ -43,15 +43,6 @@ function RedirectAuthenticatedUser() {
   return session ? <Navigate to="/overview" replace /> : <RouterRoot />;
 }
 
-function NotFoundRoute() {
-  return (
-    <VStack gap={2}>
-      <Heading level={1}>صفحه پیدا نشد</Heading>
-      <Text type="supporting">نشانی واردشده معتبر نیست.</Text>
-    </VStack>
-  );
-}
-
 export const router = createBrowserRouter([
   {
     path: "/login",
@@ -72,6 +63,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <RequireSession />,
+    errorElement: <ErrorFallback />,
     children: [
       {
         element: <AppShell />,
@@ -102,7 +94,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "*",
-            lazy: () => Promise.resolve({ Component: NotFoundRoute }),
+            lazy: () => Promise.resolve({ Component: NotFoundPage }),
           },
         ],
       },

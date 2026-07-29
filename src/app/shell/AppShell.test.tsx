@@ -10,6 +10,7 @@ import { MemoryRouter } from "react-router";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { useTranslator } from "@astryxdesign/core/i18n";
 import { Text } from "@astryxdesign/core/Text";
+import { chartRuntime } from "../../components/chart/Chart";
 import { authStore } from "../../features/auth/authStore";
 import { storage } from "../../lib/storage";
 import { router } from "../router";
@@ -28,6 +29,16 @@ function TranslationProbe() {
 }
 
 beforeEach(async () => {
+  type ChartModule = Awaited<ReturnType<typeof chartRuntime.load>>;
+  const chart = {
+    dispose: vi.fn(),
+    resize: vi.fn(),
+    setOption: vi.fn(),
+  } as unknown as ReturnType<ChartModule["init"]>;
+  const init = vi.fn<ChartModule["init"]>(() => chart);
+  vi.spyOn(chartRuntime, "load").mockResolvedValue({
+    init,
+  });
   vi.stubGlobal(
     "matchMedia",
     vi.fn().mockImplementation((query: string) => {

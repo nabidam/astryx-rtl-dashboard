@@ -266,6 +266,8 @@ gate = 1
 
 Difficulty: low.
 
+- **Done:** `3d2e63f` — evidence `specs/001-core/evidence/task-5.txt`
+
 ## Task 6 — S5 users table
 
 Objective: UX S5 — astryx data table over `usersStore.query`: search, sort, filter, paginate; Persian digits in pagination; Latin emails via `bidi.isolate`; empty states per UX.md (delete-all CTA, zero-result search + clear action); row actions edit/delete (wired fully in task 8).

@@ -1,0 +1,32 @@
+Command: yarn verify
+
+$ yarn typecheck && yarn lint && yarn format:check && yarn test
+$ tsc --noEmit
+$ eslint .
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ vitest run
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+ Test Files  10 passed (10)
+      Tests  28 passed (28)
+   Start at  12:46:21
+   Duration  3.88s
+
+Done in 12.01s.
+
+Command: yarn test:e2e
+
+$ playwright test
+
+Running 5 tests using 5 workers
+
+[1/5] [chromium] › e2e/smoke.spec.ts:3:1 › boots as a Persian RTL document with Vazirmatn
+[2/5] [chromium] › e2e/rtl-spike.spec.ts:3:1 › Astryx mirrors the shell and keeps the RTL probe within the viewport
+[3/5] [chromium] › e2e/smoke.spec.ts:54:1 › corrupt users storage recovers without crashing the authenticated shell
+[4/5] [chromium] › e2e/smoke.spec.ts:27:1 › authenticated navigation, theme switching, and logout work in the shell
+[5/5] [chromium] › e2e/smoke.spec.ts:14:1 › logs in with any non-empty credentials and opens the overview
+  5 passed (4.7s)
+Done in 5.45s.

@@ -1,0 +1,17 @@
+Command: yarn vitest run src/features/settings/SettingsPage.test.tsx
+
+yarn run v1.22.22
+warning Skipping preferred cache folder "/home/dev/.cache/yarn" because it is not writable.
+warning Selected the next writable cache folder in the list, will be "/tmp/.yarn-cache-1000".
+$ /home/dev/projects/astryxs-rtl-dashboard/node_modules/.bin/vitest run src/features/settings/SettingsPage.test.tsx
+warning Cannot find a suitable global folder. Tried these: "/usr/local, /home/dev/.yarn"
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  14:48:24
+   Duration  2.14s (transform 145ms, setup 0ms, import 1.33s, tests 306ms, environment 389ms)
+
+Done in 2.57s.

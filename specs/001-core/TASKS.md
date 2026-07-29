@@ -606,6 +606,8 @@ gate = 2
 
 Difficulty: low.
 
+- **Done:** `1e0f6c5` — evidence `specs/001-core/evidence/task-13.txt`
+
 ## Task 14 — S9 404 + S10 500 error boundary with clear-state escape
 
 Objective: UX S9/S10 — unknown route → static 404 with link back to overview; route-level error boundary → 500 page with two actions: reload, and "پاک‌کردن داده‌های ذخیره‌شده و شروع دوباره" via `lib/storage.clearAll()` then reload (corrupt-state crash-loop escape, ARCHITECTURE §4a).

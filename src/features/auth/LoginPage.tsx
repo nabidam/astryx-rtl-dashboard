@@ -3,10 +3,11 @@ import { Button } from "@astryxdesign/core/Button";
 import { Card } from "@astryxdesign/core/Card";
 import { Center } from "@astryxdesign/core/Center";
 import { FormLayout } from "@astryxdesign/core/FormLayout";
+import { Link } from "@astryxdesign/core/Link";
 import { Heading, Text } from "@astryxdesign/core/Text";
 import { TextInput } from "@astryxdesign/core/TextInput";
 import { VStack } from "@astryxdesign/core/VStack";
-import { useNavigate } from "react-router";
+import { Link as RouterLink, useNavigate } from "react-router";
 import { useAuthStore, type FieldErrors } from "./authStore";
 
 const loginCardWidth = "min(100%, calc(var(--spacing-12) * 10))";
@@ -98,6 +99,14 @@ export function LoginPage() {
               />
             </FormLayout>
           </form>
+          <VStack gap={2}>
+            <Link as={RouterLink} href="/register" isStandalone>
+              ساخت حساب کاربری
+            </Link>
+            <Link as={RouterLink} href="/forgot-password" isStandalone>
+              گذرواژه را فراموش کرده‌اید؟
+            </Link>
+          </VStack>
         </VStack>
       </Card>
     </Center>

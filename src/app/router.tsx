@@ -8,7 +8,9 @@ import {
   useLocation,
 } from "react-router";
 import { useAuthStore } from "../features/auth/authStore";
+import { ForgotPasswordPage } from "../features/auth/ForgotPasswordPage";
 import { LoginPage } from "../features/auth/LoginPage";
+import { RegisterPage } from "../features/auth/RegisterPage";
 import { UsersPage } from "../features/users/UsersPage";
 import { UserFormPage } from "../features/users/UserFormPage";
 import { AppShell } from "./shell/AppShell";
@@ -62,6 +64,14 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: <RedirectAuthenticatedUser />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPasswordPage />,
   },
   {
     path: "/__rtl-spike",

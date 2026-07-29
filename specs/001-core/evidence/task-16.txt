@@ -1,0 +1,31 @@
+Task 16 release-gate preflight evidence (2026-07-29)
+
+Command: yarn build
+Result: PASS
+Last output:
+  ✓ built in 1.10s
+  [plugin builtin:vite-reporter]
+  (!) Some chunks are larger than 500 kB after minification. Consider:
+  - Using dynamic import() to code-split the application
+  - Using build.rolldownOptions.output.codeSplitting to improve chunking
+  Done in 3.62s.
+
+Command: yarn verify
+Result: PASS
+Last output:
+  Test Files  21 passed (21)
+  Tests  64 passed (64)
+  Start at  15:26:05
+  Duration  10.65s (transform 3.17s, setup 0ms, import 52.78s, tests 21.95s, environment 22.12s)
+  Done in 20.85s.
+
+Command: yarn test:e2e e2e/release-gate.spec.ts
+Server: yarn preview --host 127.0.0.1 --port 5173
+Result: PASS against the production preview
+Last output:
+  Running 1 test using 1 worker
+  [1/1] [chromium] › e2e/release-gate.spec.ts:57:1 › gate 2: release kernel journey and corrupted-storage recovery
+  1 passed (3.6s)
+  Done in 4.23s.
+
+Human walkthrough: pending; gate is not self-certified.

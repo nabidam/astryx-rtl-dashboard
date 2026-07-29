@@ -51,6 +51,52 @@ test("authenticated navigation, theme switching, and logout work in the shell", 
   ).toBeVisible();
 });
 
+test("the users table renders seeded Persian data and finds a persisted user", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    window.localStorage.setItem("astryx-dash:v", "1");
+    window.localStorage.setItem(
+      "astryx-dash:auth",
+      JSON.stringify({
+        token: "e2e-session",
+        profile: { displayName: "آوا", email: "ava@example.com" },
+      }),
+    );
+  });
+
+  await page.goto("/users");
+
+  await expect(
+    page.getByRole("cell", { name: "آوا رضایی", exact: true }),
+  ).toBeVisible();
+  await page.evaluate(() => {
+    const users = JSON.parse(
+      window.localStorage.getItem("astryx-dash:users") ?? "[]",
+    ) as unknown[];
+    users.push({
+      id: "e2e-created-user",
+      firstName: "یگانه",
+      lastName: "قاسمی",
+      email: "yeganeh.ghasemi@example.com",
+      role: "viewer",
+      status: "active",
+      birthDate: "1998-11-22",
+      createdAt: "2026-07-29T08:00:00.000Z",
+    });
+    window.localStorage.setItem("astryx-dash:users", JSON.stringify(users));
+  });
+  await page.reload();
+
+  await page.getByLabel("جست‌وجوی کاربران").fill("یگانه");
+  await expect(
+    page.getByRole("cell", { name: "یگانه قاسمی", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("\u2068yeganeh.ghasemi@example.com\u2069"),
+  ).toBeVisible();
+});
+
 test("corrupt users storage recovers without crashing the authenticated shell", async ({
   page,
 }) => {

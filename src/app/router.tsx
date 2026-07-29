@@ -9,6 +9,7 @@ import {
 } from "react-router";
 import { useAuthStore } from "../features/auth/authStore";
 import { LoginPage } from "../features/auth/LoginPage";
+import { UsersPage } from "../features/users/UsersPage";
 import { AppShell } from "./shell/AppShell";
 import { RtlProbe } from "./shell/RtlProbe";
 
@@ -45,15 +46,6 @@ function OverviewPlaceholder() {
       <Text type="supporting">
         خلاصهٔ فعالیت‌ها در این بخش نمایش داده می‌شود.
       </Text>
-    </VStack>
-  );
-}
-
-function UsersRoute() {
-  return (
-    <VStack gap={2}>
-      <Heading level={1}>کاربران</Heading>
-      <Text type="supporting">مدیریت کاربران در این بخش انجام می‌شود.</Text>
     </VStack>
   );
 }
@@ -99,7 +91,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "users",
-            lazy: () => Promise.resolve({ Component: UsersRoute }),
+            lazy: () => Promise.resolve({ Component: UsersPage }),
           },
           {
             path: "settings",

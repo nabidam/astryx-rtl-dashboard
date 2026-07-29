@@ -474,6 +474,8 @@ gate = 1
 
 No feature task past this point starts before gate 1 is Done (walkthrough recorded + coverage green).
 
+- **GATE 1 WALKED — PASS** (2026-07-29, human) — evidence `specs/001-core/evidence/task-9.txt`. coverage `e2e/gate-1.spec.ts` `e2e/smoke.spec.ts` `e2e/rtl-spike.spec.ts`
+
 ## Task 10 — `<Chart>` wrapper (ECharts lifecycle contract §5a)
 
 Objective: hand-rolled wrapper owning the full lifecycle: lazy `import('echarts')` with skeleton pending state and Persian error + retry on rejection; init (canvas, `useDirtyRect`) / dispose; `ResizeObserver` → resize; `setOption(option, { notMerge: true })` on data change; theme derived from astryx CSS custom properties at runtime, dispose + re-init on mode change; empty series → astryx empty-state overlay; injects Jalali axis + Persian-digit label formatters.

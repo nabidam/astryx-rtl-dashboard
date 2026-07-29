@@ -1,8 +1,14 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import { InternationalizationProvider } from "@astryxdesign/core/i18n";
 import { Theme, defineTheme } from "@astryxdesign/core/theme";
 import { neutralTheme } from "@astryxdesign/theme-neutral/built";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import faMessages from "../../locale/fa.json";
 import { fixtures } from "./fixtures";
 import { UsersTable } from "./UsersTable";
@@ -73,5 +79,35 @@ describe("UsersTable", () => {
 
     expect(screen.getByText("هنوز کاربری وجود ندارد")).toBeTruthy();
     expect(screen.getByRole("button", { name: "افزودن کاربر" })).toBeTruthy();
+  });
+
+  it("wires row actions to edit and delete handlers", async () => {
+    const onEdit = vi.fn();
+    const onDelete = vi.fn();
+    render(
+      <Theme theme={testTheme} mode="light">
+        <InternationalizationProvider locale="fa" messages={{ fa: faMessages }}>
+          <UsersTable onDelete={onDelete} onEdit={onEdit} />
+        </InternationalizationProvider>
+      </Theme>,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "اقدامات آوا رضایی" }));
+    fireEvent.click(screen.getByRole("menuitem", { name: "ویرایش" }));
+    expect(onEdit).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "fixture-ava-rezaei" }),
+    );
+
+    await waitFor(() => {
+      expect(screen.queryByRole("menuitem", { name: "ویرایش" })).toBeNull();
+    });
+    fireEvent.click(screen.getByRole("button", { name: "اقدامات آوا رضایی" }));
+    await waitFor(() => {
+      expect(screen.getByRole("menuitem", { name: "حذف" })).toBeTruthy();
+    });
+    fireEvent.click(screen.getByRole("menuitem", { name: "حذف" }));
+    expect(onDelete).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "fixture-ava-rezaei" }),
+    );
   });
 });

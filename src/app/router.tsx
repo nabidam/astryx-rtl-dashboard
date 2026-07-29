@@ -10,6 +10,7 @@ import {
 import { useAuthStore } from "../features/auth/authStore";
 import { LoginPage } from "../features/auth/LoginPage";
 import { UsersPage } from "../features/users/UsersPage";
+import { UserFormPage } from "../features/users/UserFormPage";
 import { AppShell } from "./shell/AppShell";
 import { RtlProbe } from "./shell/RtlProbe";
 
@@ -92,6 +93,14 @@ export const router = createBrowserRouter([
           {
             path: "users",
             lazy: () => Promise.resolve({ Component: UsersPage }),
+          },
+          {
+            path: "users/new",
+            lazy: () => Promise.resolve({ Component: UserFormPage }),
+          },
+          {
+            path: "users/:id/edit",
+            lazy: () => Promise.resolve({ Component: UserFormPage }),
           },
           {
             path: "settings",

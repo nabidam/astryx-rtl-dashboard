@@ -55,6 +55,8 @@ type UserTableRow = User & Record<string, unknown>;
 
 type UsersTableProps = {
   onCreate?: () => void;
+  onEdit?: (user: User) => void;
+  onDelete?: (user: User) => void;
 };
 
 function roleLabel(role: UserRole): string {
@@ -104,7 +106,7 @@ function emptyState(
   );
 }
 
-export function UsersTable({ onCreate }: UsersTableProps) {
+export function UsersTable({ onCreate, onEdit, onDelete }: UsersTableProps) {
   const users = useUsersStore((state) => state.users);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<TableSort>("name-asc");
@@ -181,13 +183,16 @@ export function UsersTable({ onCreate }: UsersTableProps) {
         renderCell: (user) => (
           <MoreMenu
             label={`اقدامات ${user.firstName} ${user.lastName}`}
-            isDisabled
-            items={[{ label: "ویرایش" }, { type: "divider" }, { label: "حذف" }]}
+            items={[
+              { label: "ویرایش", onClick: () => onEdit?.(user) },
+              { type: "divider" },
+              { label: "حذف", onClick: () => onDelete?.(user) },
+            ]}
           />
         ),
       },
     ],
-    [],
+    [onDelete, onEdit],
   );
 
   return (

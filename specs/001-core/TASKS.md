@@ -46,6 +46,8 @@ layer = "contract"
 
 Difficulty: medium (dependency matrix + StyleX/astryx Vite wiring).
 
+- **Done:** `e841d04` — evidence `specs/001-core/evidence/task-0.txt`
+
 ## Task 1 — `lib/` layer: storage adapter, date, digits, bidi
 
 Objective: the four shared modules per ARCHITECTURE §1/§4a. `storage.ts` implements the full persistence contract: versioned decode (`astryx-dash:v`), per-key decoders, per-record drop for users array, corruption reset + `recovered` flag, session-wide memory-only failover on first failed write, `clearAll()` for the S10 escape hatch. `date.ts` wraps `date-fns-jalali` (ISO Gregorian storage ⇄ Jalali display). `digits.ts` Persian/Latin digit conversion. `bidi.ts` Latin-in-RTL isolation.

@@ -304,6 +304,8 @@ gate = 1
 
 Difficulty: medium.
 
+- **Done:** `c90296c` — evidence `specs/001-core/evidence/task-6.txt`
+
 ## Task 7 — Jalali picker (buy spike + component)
 
 Objective: execute ARCHITECTURE §1 picker spike, leading candidate `react-day-picker` @ 10.0.1 + `@daypicker/persian` — style with astryx tokens via `classNames`/custom components, Vazirmatn, Persian digits, dark mode. Wrap as `<JalaliPicker>`. Record spike outcome in ARCHITECTURE Decision log; if buy fails RTL/styling, STOP — path (b) requires the keyboard/ARIA contract written first (plan patch).

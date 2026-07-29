@@ -11,6 +11,7 @@ import { useAuthStore } from "../features/auth/authStore";
 import { ForgotPasswordPage } from "../features/auth/ForgotPasswordPage";
 import { LoginPage } from "../features/auth/LoginPage";
 import { RegisterPage } from "../features/auth/RegisterPage";
+import { SettingsPage } from "../features/settings/SettingsPage";
 import { UsersPage } from "../features/users/UsersPage";
 import { UserFormPage } from "../features/users/UserFormPage";
 import { AppShell } from "./shell/AppShell";
@@ -40,15 +41,6 @@ function RedirectAuthenticatedUser() {
   const session = useAuthStore((state) => state.session);
 
   return session ? <Navigate to="/overview" replace /> : <RouterRoot />;
-}
-
-function SettingsRoute() {
-  return (
-    <VStack gap={2}>
-      <Heading level={1}>تنظیمات</Heading>
-      <Text type="supporting">تنظیمات حساب و ظاهر در این بخش قرار دارد.</Text>
-    </VStack>
-  );
 }
 
 function NotFoundRoute() {
@@ -106,7 +98,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "settings",
-            lazy: () => Promise.resolve({ Component: SettingsRoute }),
+            lazy: () => Promise.resolve({ Component: SettingsPage }),
           },
           {
             path: "*",

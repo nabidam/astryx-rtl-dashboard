@@ -1,0 +1,24 @@
+Command: yarn verify
+
+Live output (final lines):
+$ yarn typecheck && yarn lint && yarn format:check && yarn test
+$ tsc --noEmit
+Done in 1.23s.
+$ eslint .
+Done in 3.58s.
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ vitest run
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+ Test Files  1 passed (1)
+ Tests  1 passed (1)
+ Start at  11:35:44
+ Duration  1.16s (transform 38ms, setup 0ms, import 603ms, tests 24ms, environment 403ms)
+
+Done in 6.22s.
+
+Acceptance journey: yarn test:e2e
+Result: 1 Playwright Chromium smoke test passed; app booted through Vite and verified dir=rtl, lang=fa, Persian root content, and computed Vazirmatn.

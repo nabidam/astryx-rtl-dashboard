@@ -1,0 +1,48 @@
+{
+  "name": "astryxs-rtl-dashboard",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "secret-scan": "node scripts/secret-scan.mjs",
+    "verify:security": "yarn audit --level high && yarn secret-scan",
+    "verify": "yarn typecheck && yarn lint && yarn format:check && yarn test",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@astryxdesign/core": "0.1.9",
+    "@astryxdesign/theme-neutral": "0.1.9",
+    "@stylexjs/stylex": "0.19.0",
+    "date-fns-jalali": "4.4.0-0",
+    "echarts": "6.1.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-router": "8.3.0",
+    "vazirmatn": "33.0.3",
+    "zustand": "5.0.14"
+  },
+  "devDependencies": {
+    "@astryxdesign/cli": "0.1.9",
+    "@playwright/test": "1.62.0",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/react": "16.3.2",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.4",
+    "eslint": "9.39.1",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "jsdom": "27.0.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.46.2",
+    "vite": "8.1.5",
+    "vitest": "4.1.10"
+  }
+}

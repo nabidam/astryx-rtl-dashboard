@@ -1,6 +1,14 @@
 import { useEffect } from "react";
-import { Text } from "@astryxdesign/core";
-import { createBrowserRouter } from "react-router";
+import { Heading, Text } from "@astryxdesign/core/Text";
+import { VStack } from "@astryxdesign/core/VStack";
+import {
+  createBrowserRouter,
+  Navigate,
+  Outlet,
+  useLocation,
+} from "react-router";
+import { useAuthStore } from "../features/auth/authStore";
+import { AppShell } from "./shell/AppShell";
 import { RtlProbe } from "./shell/RtlProbe";
 
 export function RouterRoot() {
@@ -9,16 +17,99 @@ export function RouterRoot() {
     document.documentElement.lang = "fa";
   }, []);
 
-  return <Text as="p">اسکلت داشبورد آماده است</Text>;
+  return <Text as="p">صفحه ورود</Text>;
+}
+
+export function RequireSession() {
+  const session = useAuthStore((state) => state.session);
+  const location = useLocation();
+
+  if (!session) {
+    return <Navigate to="/login" replace state={{ from: location.pathname }} />;
+  }
+
+  return <Outlet />;
+}
+
+function RedirectAuthenticatedUser() {
+  const session = useAuthStore((state) => state.session);
+
+  return session ? <Navigate to="/overview" replace /> : <RouterRoot />;
+}
+
+function OverviewPlaceholder() {
+  return (
+    <VStack gap={2}>
+      <Heading level={1}>نمای کلی</Heading>
+      <Text type="supporting">
+        خلاصهٔ فعالیت‌ها در این بخش نمایش داده می‌شود.
+      </Text>
+    </VStack>
+  );
+}
+
+function UsersRoute() {
+  return (
+    <VStack gap={2}>
+      <Heading level={1}>کاربران</Heading>
+      <Text type="supporting">مدیریت کاربران در این بخش انجام می‌شود.</Text>
+    </VStack>
+  );
+}
+
+function SettingsRoute() {
+  return (
+    <VStack gap={2}>
+      <Heading level={1}>تنظیمات</Heading>
+      <Text type="supporting">تنظیمات حساب و ظاهر در این بخش قرار دارد.</Text>
+    </VStack>
+  );
+}
+
+function NotFoundRoute() {
+  return (
+    <VStack gap={2}>
+      <Heading level={1}>صفحه پیدا نشد</Heading>
+      <Text type="supporting">نشانی واردشده معتبر نیست.</Text>
+    </VStack>
+  );
 }
 
 export const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <RedirectAuthenticatedUser />,
+  },
   {
     path: "/__rtl-spike",
     element: <RtlProbe />,
   },
   {
-    path: "*",
-    element: <RouterRoot />,
+    path: "/",
+    element: <RequireSession />,
+    children: [
+      {
+        element: <AppShell />,
+        children: [
+          { index: true, element: <Navigate to="overview" replace /> },
+          {
+            path: "overview",
+            lazy: () => Promise.resolve({ Component: OverviewPlaceholder }),
+          },
+          {
+            path: "users",
+            lazy: () => Promise.resolve({ Component: UsersRoute }),
+          },
+          {
+            path: "settings",
+            lazy: () => Promise.resolve({ Component: SettingsRoute }),
+          },
+          {
+            path: "*",
+            lazy: () => Promise.resolve({ Component: NotFoundRoute }),
+          },
+        ],
+      },
+    ],
   },
 ]);

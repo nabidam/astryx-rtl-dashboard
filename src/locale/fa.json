@@ -1,0 +1,48 @@
+{
+  "@astryx.alertDialog.cancel": { "defaultMessage": "انصراف" },
+  "@astryx.appShell.mobileNavigation": {
+    "defaultMessage": "ناوبری تلفن همراه"
+  },
+  "@astryx.banner.dismiss": { "defaultMessage": "بستن" },
+  "@astryx.dialog.close": { "defaultMessage": "بستن گفت‌وگو" },
+  "@astryx.emptyState.action": { "defaultMessage": "انجام اقدام" },
+  "@astryx.pagination.count": {
+    "defaultMessage": "{from, number}–{to, number} از {total, number}"
+  },
+  "@astryx.pagination.goToPage": {
+    "defaultMessage": "رفتن به صفحه {page, number}"
+  },
+  "@astryx.pagination.itemsPerPage": { "defaultMessage": "تعداد در هر صفحه" },
+  "@astryx.pagination.label": { "defaultMessage": "صفحه‌بندی" },
+  "@astryx.pagination.next": { "defaultMessage": "رفتن به صفحه بعد" },
+  "@astryx.pagination.pageAnnounce": {
+    "defaultMessage": "صفحه {current, number}"
+  },
+  "@astryx.pagination.pageIndicators": { "defaultMessage": "نشانگرهای صفحه" },
+  "@astryx.pagination.pageOfTotal": {
+    "defaultMessage": "صفحه {current, number} از {total, number}"
+  },
+  "@astryx.pagination.previous": { "defaultMessage": "رفتن به صفحه قبل" },
+  "@astryx.selector.clearLabel": { "defaultMessage": "پاک‌کردن انتخاب" },
+  "@astryx.selector.placeholder": { "defaultMessage": "انتخاب کنید…" },
+  "@astryx.selector.searchOptions": { "defaultMessage": "جست‌وجوی گزینه‌ها" },
+  "@astryx.selector.searchPlaceholder": { "defaultMessage": "جست‌وجو…" },
+  "@astryx.sideNav.label": { "defaultMessage": "نوار کناری" },
+  "@astryx.sideNav.resizeSidebar": {
+    "defaultMessage": "تغییر اندازه نوار کناری"
+  },
+  "@astryx.sideNavCollapseButton.collapseSidebar": {
+    "defaultMessage": "جمع‌کردن نوار کناری"
+  },
+  "@astryx.sideNavCollapseButton.expandSidebar": {
+    "defaultMessage": "بازکردن نوار کناری"
+  },
+  "@astryx.table.label": { "defaultMessage": "جدول" },
+  "@astryx.table.noData": { "defaultMessage": "داده‌ای برای نمایش وجود ندارد" },
+  "@astryx.table.pagination.label": { "defaultMessage": "صفحه‌بندی جدول" },
+  "@astryx.table.selection.selectAllRows": {
+    "defaultMessage": "انتخاب همهٔ ردیف‌ها"
+  },
+  "@astryx.table.selection.selectRow": { "defaultMessage": "انتخاب ردیف" },
+  "@astryx.textInput.clearLabel": { "defaultMessage": "پاک‌کردن ورودی" }
+}

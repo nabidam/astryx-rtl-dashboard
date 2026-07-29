@@ -395,6 +395,8 @@ gate = 1
 
 Difficulty: medium.
 
+- **Done:** `1352587` — evidence `specs/001-core/evidence/task-8.txt`
+
 ## Task 9 — DEMO GATE 1: auth + users CRUD journey
 
 Journey walked by a human in a fresh browser profile (disposable localStorage — fail-closed: never walk against a profile holding real data; there is no production backend). Playwright covers the same journey with fresh browser contexts. Completion artifact: walkthrough result recorded in the done-mark + `specs/001-core/evidence/task-9.txt`; screenshots optional.

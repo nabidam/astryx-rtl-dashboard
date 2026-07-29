@@ -40,17 +40,6 @@ function RedirectAuthenticatedUser() {
   return session ? <Navigate to="/overview" replace /> : <RouterRoot />;
 }
 
-function OverviewPlaceholder() {
-  return (
-    <VStack gap={2}>
-      <Heading level={1}>نمای کلی</Heading>
-      <Text type="supporting">
-        خلاصهٔ فعالیت‌ها در این بخش نمایش داده می‌شود.
-      </Text>
-    </VStack>
-  );
-}
-
 function SettingsRoute() {
   return (
     <VStack gap={2}>
@@ -88,7 +77,10 @@ export const router = createBrowserRouter([
           { index: true, element: <Navigate to="overview" replace /> },
           {
             path: "overview",
-            lazy: () => Promise.resolve({ Component: OverviewPlaceholder }),
+            lazy: () =>
+              import("../features/overview/OverviewPage").then((module) => ({
+                Component: module.OverviewPage,
+              })),
           },
           {
             path: "users",

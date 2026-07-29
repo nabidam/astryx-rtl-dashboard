@@ -1,0 +1,25 @@
+Task 7 verification — 2026-07-29
+
+Command: yarn verify
+
+Last live output:
+$ tsc --noEmit
+$ eslint .
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ vitest run
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+ Test Files  12 passed (12)
+      Tests  35 passed (35)
+   Start at  13:23:03
+   Duration  7.72s (transform 1.69s, setup 0ms, import 18.63s, tests 11.77s, environment 12.76s)
+
+Done in 15.60s.
+
+Acceptance behavior exercised by src/components/jalali-picker/JalaliPicker.test.tsx:
+- Esfand 30 selection emits { year: 1403, month: 12, day: 30 }.
+- RTL ArrowLeft moves focus from day 1 to day 2; PageDown reaches Farvardin 1404.
+- Escape closes the controlled popover.

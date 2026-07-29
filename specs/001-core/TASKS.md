@@ -346,6 +346,8 @@ gate = 1
 
 Difficulty: medium.
 
+- **Done:** `cffe280` — evidence `specs/001-core/evidence/task-7.txt`
+
 ## Task 8 — S6 user form + S7 delete confirm dialog
 
 Objective: UX S6/S7 — create/edit form (astryx form components, `<JalaliPicker>` for birth date), rendering store `FieldErrors` inline in Persian; edit prefills, missing id redirects to S5; delete confirm dialog over the table (cancel = no change, confirm = remove). Wire S5 row actions.

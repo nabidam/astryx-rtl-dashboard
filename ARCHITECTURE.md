@@ -164,3 +164,4 @@ No external systems, no server, no third-party protocol surface — the external
 - 2026-07-29 — [REVIEW_1 F3] dropped settingsStore; authStore sole profile owner — three-store commitment holds, no dual ownership of displayName.
 - 2026-07-29 — [REVIEW_1 F4] explicit `UserInput` write model with defaults + Jalali date validation at store boundary — persisted `User` invariants must be enforceable, not implied.
 - 2026-07-29 — [REVIEW_1 F7] `<Chart>` bound by lifecycle contract §5a; "trivial" size claim removed — init/dispose/resize/theme/error behavior is testable surface, not incidental.
+- 2026-07-29 — [Task 3 RTL spike] candidate (a) confirmed: Astryx `AppShell`, `SideNav`, `Table`, and `Dialog` mirrored correctly under `dir="rtl"` at 1280px and 1920px with no page-level horizontal overflow. Proceed with the native Astryx shell; no swizzles or feasibility re-check required.

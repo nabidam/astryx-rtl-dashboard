@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Text } from "@astryxdesign/core";
 import { createBrowserRouter } from "react-router";
+import { RtlProbe } from "./shell/RtlProbe";
 
 export function RouterRoot() {
   useEffect(() => {
@@ -12,6 +13,10 @@ export function RouterRoot() {
 }
 
 export const router = createBrowserRouter([
+  {
+    path: "/__rtl-spike",
+    element: <RtlProbe />,
+  },
   {
     path: "*",
     element: <RouterRoot />,

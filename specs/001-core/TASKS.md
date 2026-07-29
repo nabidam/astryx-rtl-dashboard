@@ -156,6 +156,8 @@ layer = "contract"
 
 Difficulty: medium-high (validation + seeding + hydration edge cases).
 
+- **Done:** `f521c49` — evidence `specs/001-core/evidence/task-2.txt`
+
 ## Task 3 — SPIKE: astryx RTL correctness under `dir="rtl"`
 
 Objective: decide ARCHITECTURE §1 spike (a)/(b). Render astryx AppShell + SideNav + Table + a dialog under `dir="rtl"` at 1280–1920 px; Playwright screenshot + overflow assertions. Outcome recorded in ARCHITECTURE Decision log. If (b) — RTL broken — STOP: feasibility re-check before any shell work.

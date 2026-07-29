@@ -97,6 +97,8 @@ layer = "contract"
 
 Difficulty: medium.
 
+- **Done:** `16ae7e0` — evidence `specs/001-core/evidence/task-1.txt`
+
 ## Task 2 — Zustand stores: auth, theme, users (+ fixtures, seeding)
 
 Objective: the three stores per ARCHITECTURE §5, hydrating from `lib/storage` on boot, write-through persistence. `usersStore` enforces the `UserInput` write model (§4): required fields, email shape + uniqueness, real non-future Jalali birth date, defaults, store-generated `id`/`createdAt`; Persian `FieldErrors` via `Result` — never throws. Seeding rule F2: fixtures (realistic Persian names, Latin emails) seed only when the `users` key is absent; persisted `[]` never reseeds.

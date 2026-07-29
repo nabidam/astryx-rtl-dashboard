@@ -1,0 +1,23 @@
+Command: yarn verify
+
+Live output (final lines):
+$ yarn typecheck && yarn lint && yarn format:check && yarn test
+$ tsc --noEmit
+$ eslint .
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ vitest run
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+
+ Test Files  5 passed (5)
+      Tests  13 passed (13)
+   Start at  11:49:09
+   Duration  1.66s (transform 236ms, setup 0ms, import 1.89s, tests 1.03s, environment 2.35s)
+
+Done in 7.39s.
+
+Acceptance behavior: src/lib/storage.test.ts, src/lib/date.test.ts, src/lib/digits.test.ts, src/lib/bidi.test.ts
+Result: 13 unit/contract assertions passed, exercising persistence recovery and failover, Jalali boundaries and round trips, digit normalization, bidi isolation, and clearAll().

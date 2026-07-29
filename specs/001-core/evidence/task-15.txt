@@ -1,0 +1,18 @@
+Command: yarn verify
+
+Live output (final verification run):
+$ tsc --noEmit
+$ eslint .
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ vitest run
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+ Test Files  21 passed (21)
+ Tests  64 passed (64)
+ Start at  15:07:02
+ Duration  10.75s (transform 3.62s, setup 0ms, import 51.61s, tests 22.20s, environment 22.34s)
+
+Done in 20.64s.

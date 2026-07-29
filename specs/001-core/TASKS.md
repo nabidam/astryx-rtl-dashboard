@@ -650,6 +650,8 @@ layer = "integration"
 
 Difficulty: low.
 
+- **Done:** `60d283c` — evidence `specs/001-core/evidence/task-15.txt`
+
 ## Task 16 — RELEASE GATE: kernel journey, release build
 
 Kernel journey (SPEC.md) walked by a human against the production composition: release build served by preview, fresh browser profile (disposable localStorage — fail-closed: no real data; no backend exists). Playwright runs the same journey against the preview server. No external systems (ARCHITECTURE §6) → no production-composition proof task required. Walkthrough additionally observes the task-15 re-brand: run `astryx theme` accent change, rebuild, confirm shell/buttons/charts restyle with zero component edits (recorded as an observation in the done-mark). Completion artifact: walkthrough result + `specs/001-core/evidence/task-16.txt`.

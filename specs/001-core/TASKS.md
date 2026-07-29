@@ -235,6 +235,8 @@ gate = 2
 
 Difficulty: medium-high.
 
+- **Done:** `be40fb9` — evidence `specs/001-core/evidence/task-4.txt`
+
 ## Task 5 — S1 login page (fake auth)
 
 Objective: UX S1 — bare full-page RTL Persian login, Vazirmatn, astryx components; empty-field inline Persian validation; any credentials → `authStore.login` → route to overview.

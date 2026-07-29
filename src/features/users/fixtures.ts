@@ -1,0 +1,66 @@
+import type { User } from "./usersStore";
+
+export const fixtures: User[] = [
+  {
+    id: "fixture-ava-rezaei",
+    firstName: "آوا",
+    lastName: "رضایی",
+    email: "ava.rezaei@example.com",
+    role: "admin",
+    status: "active",
+    birthDate: "2000-03-21",
+    createdAt: "2025-01-03T08:30:00.000Z",
+  },
+  {
+    id: "fixture-mohammad-karimi",
+    firstName: "محمد",
+    lastName: "کریمی",
+    email: "m.karimi@example.com",
+    role: "editor",
+    status: "active",
+    birthDate: "1994-07-23",
+    createdAt: "2025-01-05T09:15:00.000Z",
+  },
+  {
+    id: "fixture-sara-ahmadi",
+    firstName: "سارا",
+    lastName: "احمدی",
+    email: "sara.ahmadi@example.com",
+    role: "viewer",
+    status: "inactive",
+    birthDate: "1998-11-22",
+    createdAt: "2025-01-08T10:00:00.000Z",
+  },
+  {
+    id: "fixture-ali-hosseini",
+    firstName: "علی",
+    lastName: "حسینی",
+    email: "ali.hosseini@example.com",
+    role: "viewer",
+    status: "active",
+    birthDate: "1991-02-19",
+    createdAt: "2025-01-11T11:45:00.000Z",
+  },
+  {
+    id: "fixture-niloofar-moradi",
+    firstName: "نیلوفر",
+    lastName: "مرادی",
+    email: "niloofar.moradi@example.com",
+    role: "editor",
+    status: "active",
+    birthDate: "2002-08-24",
+    createdAt: "2025-01-14T12:20:00.000Z",
+  },
+  {
+    id: "fixture-reza-naderi",
+    firstName: "رضا",
+    lastName: "نادری",
+    email: "reza.naderi@example.com",
+    role: "viewer",
+    status: "active",
+    birthDate: "1989-12-22",
+    createdAt: "2025-01-17T13:05:00.000Z",
+  },
+];
+
+export const userFixtures = fixtures;

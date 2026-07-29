@@ -1,0 +1,26 @@
+Command: yarn verify && yarn build
+
+Live output (final lines):
+$ vitest run
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+
+ Test Files  8 passed (8)
+      Tests  23 passed (23)
+   Start at 12:06:04
+   Duration 2.03s (transform 399ms, setup 0ms, import 2.20s, tests 4.89s, environment 4.79s)
+
+Done in 8.34s.
+$ tsc --noEmit && vite build
+vite v8.1.5 building client environment for production...
+transforming...✓ 2338 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html 0.53 kB │ gzip: 0.35 kB
+dist/assets/index-B4_QGI1R.js 338.66 kB │ gzip: 106.49 kB
+✓ built in 513ms
+Done in 2.16s.
+
+Acceptance behavior: authStore.test.ts, themeStore.test.ts, usersStore.test.ts
+Result: store hydration, write-through persistence, Persian validation errors, fixture seeding, empty-array preservation, query behavior, and reload-shaped module hydration passed. Playwright smoke journey also passed with `yarn test:e2e` (1 test).

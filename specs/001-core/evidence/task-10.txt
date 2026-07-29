@@ -1,0 +1,41 @@
+Task 10 verification — 2026-07-29
+
+Commands: yarn vitest run src/components/chart/Chart.test.tsx && yarn verify && yarn test:e2e
+
+Last live output:
+
+$ vitest run src/components/chart/Chart.test.tsx
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+
+$ yarn verify
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+ Test Files  15 passed (15)
+      Tests  48 passed (48)
+   Start at  14:27:41
+   Duration  8.81s
+
+Done in 17.41s.
+
+$ playwright test
+
+Running 7 tests using 7 workers
+
+[1/7] [chromium] › e2e/smoke.spec.ts:27:1 › authenticated navigation, theme switching, and logout work in the shell
+[2/7] [chromium] › e2e/smoke.spec.ts:14:1 › logs in with any non-empty credentials and opens the overview
+[3/7] [chromium] › e2e/rtl-spike.spec.ts:3:1 › Astryx mirrors the shell and keeps the RTL probe within the viewport
+[4/7] [chromium] › e2e/smoke.spec.ts:100:1 › corrupt users storage recovers without crashing the authenticated shell
+[5/7] [chromium] › e2e/smoke.spec.ts:54:1 › the users table renders seeded Persian data and finds a persisted user
+[6/7] [chromium] › e2e/gate-1.spec.ts:45:1 › gate 1: fresh-profile auth and users CRUD journey
+[7/7] [chromium] › e2e/smoke.spec.ts:3:1 › boots as a Persian RTL document with Vazirmatn
+  7 passed (10.3s)
+
+Acceptance behavior exercised by the focused integration suite:
+- Lazy loading, import failure and retry, and Astryx skeleton/empty states.
+- Canvas init/dispose, ResizeObserver resize, token re-derivation on mode change, and option refresh on data changes.
+- Jalali axis and Persian-digit formatters with `notMerge: true` option application.

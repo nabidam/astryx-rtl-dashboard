@@ -522,6 +522,8 @@ gate = 2
 
 Difficulty: high (lifecycle + runtime theming).
 
+- **Done:** `cf4e847` — evidence `specs/001-core/evidence/task-10.txt`
+
 ## Task 11 — S4 overview dashboard
 
 Objective: UX S4 — stat card row (top-start) computed from `usersStore` + fixture-derived series; ECharts charts through `<Chart>`; Jalali axis labels, Persian digits; loading skeletons while lazy chunk loads; zero data → cards show ۰ with muted note.

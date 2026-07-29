@@ -28,4 +28,4 @@ Last output:
   1 passed (3.6s)
   Done in 4.23s.
 
-Human walkthrough: pending; gate is not self-certified.
+Human walkthrough: PASS (2026-07-29, human).

@@ -731,4 +731,6 @@ layer = "e2e"
 gate = 2
 ```
 
+- **GATE 2 WALKED — PASS** (2026-07-29, human) — evidence `specs/001-core/evidence/task-16.txt` coverage `e2e/release-gate.spec.ts`
+
 v1 ships only after this gate is WALKED — PASS.

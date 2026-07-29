@@ -177,6 +177,8 @@ gate = 1
 
 Difficulty: low (but decision-critical).
 
+- **Done:** `e6db655` — evidence `specs/001-core/evidence/task-3.txt`
+
 ## Task 4 — App shell, router, guards, `fa.json`, global banners
 
 Objective: AppShell + SideNav + header (dark-mode toggle, logout, displayName) framing S4–S8; `createBrowserRouter` with auth guard (no session → S1; session → S4 default), lazy route boundaries, placeholder overview route (real S4 lands in task 11); author `locale/fa.json` astryx Persian catalog; shell banners for `storage.recovered` and memory-only failover (once per page lifetime, Persian wording per UX.md).

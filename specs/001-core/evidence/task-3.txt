@@ -1,0 +1,37 @@
+Task 3 evidence captured live on 2026-07-29.
+
+Command: yarn verify
+
+$ yarn typecheck && yarn lint && yarn format:check && yarn test
+$ tsc --noEmit
+$ eslint .
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+$ vitest run
+
+ RUN  v4.1.10 /home/dev/projects/astryxs-rtl-dashboard
+
+ Test Files  8 passed (8)
+      Tests  23 passed (23)
+   Start at  12:30:08
+   Duration  2.53s (transform 562ms, setup 0ms, import 3.08s, tests 5.95s, environment 5.49s)
+
+Done in 9.46s.
+
+Command: yarn test:e2e
+
+Running 2 tests using 2 workers
+
+[1/2] [chromium] › e2e/smoke.spec.ts:3:1 › boots as a Persian RTL document with Vazirmatn
+[2/2] [chromium] › e2e/rtl-spike.spec.ts:3:1 › Astryx mirrors the shell and keeps the RTL probe within the viewport
+[WebServer] 12:30:18 PM [vite] (client) [console.warn] Theme: "astryx-rtl-dashboard" is using runtime style injection. For better performance, use the pre-built theme:
+[WebServer]
+[WebServer]   import {astryx-rtl-dashboardTheme} from '@astryxdesign/theme-astryx-rtl-dashboard/built';
+[WebServer]   import '@astryxdesign/theme-astryx-rtl-dashboard/theme.css';
+[WebServer]
+[WebServer] For custom themes, run `npx @astryxdesign/cli theme build <file>` to generate the built artifacts.
+  2 passed (3.8s)
+Done in 4.41s.
+
+Acceptance behavior: the running probe at /__rtl-spike rendered AppShell, SideNav, Table, and Dialog at 1280px and 1920px. The Playwright test asserted a right-side sidebar, no document/body horizontal overflow, dialog containment, and captured shell/dialog screenshots for both widths.

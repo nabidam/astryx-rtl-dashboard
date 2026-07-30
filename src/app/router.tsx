@@ -77,6 +77,13 @@ export const router = createBrowserRouter([
               })),
           },
           {
+            path: "overview-2",
+            lazy: () =>
+              import("../features/overview/OverviewTwoPage").then((module) => ({
+                Component: module.OverviewTwoPage,
+              })),
+          },
+          {
             path: "users",
             lazy: () => Promise.resolve({ Component: UsersPage }),
           },

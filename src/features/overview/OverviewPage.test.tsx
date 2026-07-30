@@ -23,7 +23,11 @@ const testTheme = defineTheme({
 const chartTheme: ChartTheme = {
   backgroundColor: "var(--color-background-surface)",
   color: [],
-  textStyle: { color: "var(--color-text-primary)" },
+  textStyle: {
+    color: "var(--color-text-primary)",
+    fontFamily: "var(--font-family-body)",
+  },
+  tooltip: { textStyle: { fontFamily: "var(--font-family-body)" } },
   categoryAxis: {
     axisLine: { lineStyle: { color: "var(--color-border)" } },
     axisLabel: { color: "var(--color-text-secondary)" },
@@ -63,9 +67,18 @@ describe("OverviewPage", () => {
     expect(screen.getByText("کل کاربران")).toBeTruthy();
     expect(screen.getByText("کاربران فعال")).toBeTruthy();
     expect(screen.getByText("مدیران")).toBeTruthy();
-    expect(screen.getByText("۶")).toBeTruthy();
-    expect(screen.getByText("۵")).toBeTruthy();
-    expect(screen.getByText("۱")).toBeTruthy();
+    expect(screen.getAllByText("۶").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("۵").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("۱").length).toBeGreaterThan(0);
+  });
+
+  it("summarizes the activation rate and the newest users", () => {
+    renderOverviewPage();
+
+    expect(screen.getAllByText("نرخ کاربران فعال").length).toBeGreaterThan(0);
+    expect(screen.getByText("۸۳٪")).toBeTruthy();
+    expect(screen.getByText("تازه‌ترین کاربران")).toBeTruthy();
+    expect(screen.getAllByText("فعال").length).toBeGreaterThan(0);
   });
 
   it("shows zero-valued cards and a muted no-data note when there are no users", () => {
@@ -74,15 +87,16 @@ describe("OverviewPage", () => {
 
     expect(screen.getAllByText("۰")).toHaveLength(3);
     expect(screen.getAllByText("داده‌ای برای نمایش وجود ندارد")).toHaveLength(
-      3,
+      4,
     );
+    expect(screen.getByText("۰٪")).toBeTruthy();
   });
 
   it("shows skeleton placeholders while the ECharts chunk is loading", async () => {
     renderOverviewPage();
 
     await waitFor(() => {
-      expect(document.querySelectorAll(".astryx-skeleton")).toHaveLength(2);
+      expect(document.querySelectorAll(".astryx-skeleton")).toHaveLength(5);
     });
   });
 

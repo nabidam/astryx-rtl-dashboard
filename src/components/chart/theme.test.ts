@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { deriveChartTheme } from "./theme";
+import { deriveChartTheme, withPersianChartFormatters } from "./theme";
 
 declare global {
   interface ImportMeta {
@@ -40,6 +40,38 @@ describe("chart theme re-branding", () => {
 
     expect(deriveChartTheme(host).color[0]).toBe("brand-accent-b");
     host.remove();
+  });
+
+  it("renders tooltips with Jalali dates and Persian digits", () => {
+    const option = withPersianChartFormatters({
+      tooltip: { trigger: "axis" },
+      series: [{ type: "line", data: [4] }],
+    });
+    const tooltip = option.tooltip;
+    const formatter =
+      tooltip && !Array.isArray(tooltip) ? tooltip.formatter : undefined;
+
+    expect(typeof formatter).toBe("function");
+    if (typeof formatter !== "function") {
+      throw new Error("قالب‌بند راهنمای نمودار تنظیم نشد");
+    }
+    const formatTooltip = formatter as unknown as (
+      params: Array<{
+        axisValueLabel: string;
+        seriesName: string;
+        value: number;
+      }>,
+    ) => string;
+
+    expect(
+      formatTooltip([
+        {
+          axisValueLabel: "2025-01-11",
+          seriesName: "مجموع کاربران",
+          value: 4,
+        },
+      ]),
+    ).toBe("۱۴۰۳/۱۰/۲۲<br/>مجموع کاربران: ۴");
   });
 
   it("keeps source files free of hardcoded color literals", () => {

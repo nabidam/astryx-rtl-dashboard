@@ -16,8 +16,15 @@ type EChartsModule = Pick<typeof import("echarts"), "init">;
 
 type ChartProps<TSeries> = {
   buildOption: (theme: ChartTheme) => EChartsOption;
+  className?: string;
   data: TSeries;
+  /** Chart canvases have no intrinsic size, so the host must be given one. */
+  height?: string;
 };
+
+const DEFAULT_CHART_HEIGHT = "calc(var(--spacing-12) * 4)";
+
+export type ChartOption = EChartsOption;
 
 export const chartRuntime = {
   load: (): Promise<EChartsModule> => import("echarts"),
@@ -38,7 +45,12 @@ function hasEmptySeries(series: EChartsOption["series"]): boolean {
   );
 }
 
-export function Chart<TSeries>({ buildOption, data }: ChartProps<TSeries>) {
+export function Chart<TSeries>({
+  buildOption,
+  className,
+  data,
+  height = DEFAULT_CHART_HEIGHT,
+}: ChartProps<TSeries>) {
   const mode = useThemeStore((state) => state.mode);
   const [host, setHost] = useState<HTMLElement | null>(null);
   const [chartTheme, setChartTheme] = useState<ChartTheme | null>(null);
@@ -90,10 +102,10 @@ export function Chart<TSeries>({ buildOption, data }: ChartProps<TSeries>) {
       return undefined;
     }
 
-    const chart = module.init(host, chartTheme, {
-      renderer: "canvas",
-      useDirtyRect: true,
-    });
+    // Dirty-rect painting leaves stale pixels on a transparent canvas: hover
+    // highlights repaint a sub-rect that never gets cleared, so bars ghost and
+    // axis pointers smear. Full repaints are cheap at these data sizes.
+    const chart = module.init(host, chartTheme, { renderer: "canvas" });
     chartRef.current = chart;
     chart.setOption(option, { notMerge: true });
     lastAppliedOptionRef.current = option;
@@ -138,14 +150,16 @@ export function Chart<TSeries>({ buildOption, data }: ChartProps<TSeries>) {
 
   return (
     <VStack
+      className={className}
       key={mode}
       ref={setChartHost}
       aria-label="نمودار"
-      minHeight="var(--spacing-12)"
+      height={height}
+      minHeight={height}
       width="100%"
     >
       {!module || !chartTheme ? (
-        <Skeleton height="var(--spacing-12)" radius={3} width="100%" />
+        <Skeleton height={height} radius={3} width="100%" />
       ) : isEmpty ? (
         <EmptyState
           isCompact

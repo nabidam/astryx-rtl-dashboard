@@ -6,7 +6,8 @@ import {
   waitFor,
 } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { themeStore } from "../../app/shell/themeStore";
 import { authStore } from "./authStore";
 import { LoginPage } from "./LoginPage";
 
@@ -25,14 +26,30 @@ function renderLoginPage() {
 
 describe("LoginPage", () => {
   beforeEach(() => {
+    Object.defineProperty(window, "matchMedia", {
+      configurable: true,
+      value: vi.fn().mockImplementation((query: string) => ({
+        addEventListener: vi.fn(),
+        addListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+        matches: false,
+        media: query,
+        onchange: null,
+        removeEventListener: vi.fn(),
+        removeListener: vi.fn(),
+      })),
+    });
     window.localStorage.clear();
     authStore.setState({ session: null });
+    themeStore.setState({ mode: "dark" });
   });
 
   afterEach(() => {
     cleanup();
     window.localStorage.clear();
     authStore.setState({ session: null });
+    themeStore.setState({ mode: "dark" });
+    Reflect.deleteProperty(window, "matchMedia");
   });
 
   it("shows inline Persian validation and does not create a session for empty fields", () => {
@@ -45,6 +62,25 @@ describe("LoginPage", () => {
     expect(router.state.location.pathname).toBe("/login");
     expect(authStore.getState().session).toBeNull();
     expect(window.localStorage.getItem("astryx-dash:auth")).toBeNull();
+  });
+
+  it("uses an email input for the sign-in email", () => {
+    renderLoginPage();
+
+    const email = screen.getByLabelText("ایمیل");
+
+    expect(email.getAttribute("type")).toBe("email");
+  });
+
+  it("lets the visitor switch to light mode before signing in", () => {
+    renderLoginPage();
+
+    fireEvent.click(screen.getByRole("button", { name: "تغییر به حالت روشن" }));
+
+    expect(themeStore.getState().mode).toBe("light");
+    expect(window.localStorage.getItem("astryx-dash:theme")).toBe(
+      JSON.stringify({ mode: "light" }),
+    );
   });
 
   it("accepts non-empty credentials and enters the overview", async () => {

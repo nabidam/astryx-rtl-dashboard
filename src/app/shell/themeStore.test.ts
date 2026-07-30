@@ -11,15 +11,15 @@ beforeEach(() => {
 });
 
 describe("themeStore", () => {
-  it("defaults to light, toggles, and persists the selected mode", async () => {
+  it("defaults to dark, toggles, and persists the selected mode", async () => {
     const { themeStore } = await loadStore();
 
-    expect(themeStore.getState().mode).toBe("light");
+    expect(themeStore.getState().mode).toBe("dark");
     themeStore.getState().toggle();
 
-    expect(themeStore.getState().mode).toBe("dark");
+    expect(themeStore.getState().mode).toBe("light");
     expect(window.localStorage.getItem("astryx-dash:theme")).toBe(
-      JSON.stringify({ mode: "dark" }),
+      JSON.stringify({ mode: "light" }),
     );
   });
 

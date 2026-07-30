@@ -8,6 +8,7 @@ import "@astryxdesign/theme-neutral/theme.css";
 import { neutralTheme } from "@astryxdesign/theme-neutral/built";
 import "vazirmatn/Vazirmatn-Variable-font-face.css";
 import { router } from "./app/router";
+import { useThemeStore } from "./app/shell/themeStore";
 
 const root = document.getElementById("root");
 
@@ -27,10 +28,18 @@ const rtlTheme = defineTheme({
   },
 });
 
-createRoot(root).render(
-  <StrictMode>
-    <Theme theme={rtlTheme} mode="light">
+function Application() {
+  const mode = useThemeStore((state) => state.mode);
+
+  return (
+    <Theme theme={rtlTheme} mode={mode}>
       <RouterProvider router={router} />
     </Theme>
+  );
+}
+
+createRoot(root).render(
+  <StrictMode>
+    <Application />
   </StrictMode>,
 );

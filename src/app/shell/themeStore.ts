@@ -14,7 +14,7 @@ function hydrateMode(): ThemeMode {
     return persisted.mode;
   }
 
-  const mode: ThemeMode = "light";
+  const mode: ThemeMode = "dark";
   storage.write("theme", { mode });
   return mode;
 }

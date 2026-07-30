@@ -10,6 +10,7 @@ const routes = [
   { href: "/overview", label: "نمای کلی" },
   { href: "/overview-2", label: "نمای کلی ۲" },
   { href: "/users", label: "کاربران" },
+  { href: "/tables", label: "جدول‌ها" },
   { href: "/settings", label: "تنظیمات" },
 ] as const;
 

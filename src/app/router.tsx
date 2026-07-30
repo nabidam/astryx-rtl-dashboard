@@ -12,6 +12,7 @@ import { RegisterPage } from "../features/auth/RegisterPage";
 import { SettingsPage } from "../features/settings/SettingsPage";
 import { UsersPage } from "../features/users/UsersPage";
 import { UserFormPage } from "../features/users/UserFormPage";
+import { TablesPage } from "../features/tables/TablesPage";
 import { ErrorFallback } from "../pages/errors/ErrorFallback";
 import { NotFoundPage } from "../pages/errors/NotFoundPage";
 import { AppShell } from "./shell/AppShell";
@@ -94,6 +95,10 @@ export const router = createBrowserRouter([
           {
             path: "users/:id/edit",
             lazy: () => Promise.resolve({ Component: UserFormPage }),
+          },
+          {
+            path: "tables",
+            lazy: () => Promise.resolve({ Component: TablesPage }),
           },
           {
             path: "settings",
